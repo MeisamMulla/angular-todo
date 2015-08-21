@@ -12,8 +12,8 @@
         <div class="col-md-12" ng-controller="todoController">
             <h1>Simple To-Do List</h1> <hr />
 
-            <form ng-submit="addTodo()">
-                <input type="text" class="form-control input-lg main-task-add" placeholder="Type a new task and press enter..." ng-model="todoText">
+            <form name="todoForm" ng-submit="addTodo()">
+                <input type="text" class="form-control input-lg main-task-add" placeholder="Type a new task and press enter..." name="todoText" ng-model="todoText" required>
             </form>
 
             <ul class="list-group">
