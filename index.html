@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="todo">
+<head>
+    <title>Simple to-do list app</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="js/todo.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-12" ng-controller="todoController">
+            <h1>Simple To-Do List</h1> <hr />
+
+            <form ng-submit="addTodo()">
+                <input type="text" class="form-control input-lg main-task-add" placeholder="Type a new task and press enter..." ng-model="todoText">
+            </form>
+
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="task in tasks track by $index" ng-class="{'done': task.done}" ng-click="toggleTodo($index)">
+                    <strong>{{task.title}}</strong> <br />
+                    <small class="gray">Added: {{task.added | date:'medium'}}</small>
+
+                    <div class="delete">
+                        <a ng-click="deleteTodo($index)" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="list-group-item center gray" ng-show="!tasks.length">
+                    You have nothing on your to-do list yet!
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
